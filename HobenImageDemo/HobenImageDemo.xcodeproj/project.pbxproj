@@ -1,0 +1,664 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		061C700C226EC390000C0499 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 061C700B226EC390000C0499 /* AppDelegate.m */; };
+		061C700F226EC390000C0499 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 061C700E226EC390000C0499 /* ViewController.m */; };
+		061C7012226EC390000C0499 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 061C7010226EC390000C0499 /* Main.storyboard */; };
+		061C7014226EC391000C0499 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 061C7013226EC391000C0499 /* Assets.xcassets */; };
+		061C7017226EC391000C0499 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 061C7015226EC391000C0499 /* LaunchScreen.storyboard */; };
+		061C701A226EC391000C0499 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 061C7019226EC391000C0499 /* main.m */; };
+		061C7024226EC391000C0499 /* HobenImageDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 061C7023226EC391000C0499 /* HobenImageDemoTests.m */; };
+		061C702F226EC391000C0499 /* HobenImageDemoUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 061C702E226EC391000C0499 /* HobenImageDemoUITests.m */; };
+		066A4578226EEA6800665AF5 /* HobenImageLib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 066A4577226EEA6800665AF5 /* HobenImageLib.framework */; };
+		066A457C226EFE1300665AF5 /* PreviewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 066A457B226EFE1300665AF5 /* PreviewController.m */; };
+		19BE9A6D5E4C50AF62983D62 /* libPods-HobenImageDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 63A927621CC8CC7429AF3B4A /* libPods-HobenImageDemo.a */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		061C7020226EC391000C0499 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 061C6FFF226EC390000C0499 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 061C7006226EC390000C0499;
+			remoteInfo = HobenImageDemo;
+		};
+		061C702B226EC391000C0499 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 061C6FFF226EC390000C0499 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 061C7006226EC390000C0499;
+			remoteInfo = HobenImageDemo;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		061C7007226EC390000C0499 /* HobenImageDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HobenImageDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		061C700A226EC390000C0499 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		061C700B226EC390000C0499 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		061C700D226EC390000C0499 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		061C700E226EC390000C0499 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		061C7011226EC390000C0499 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		061C7013226EC391000C0499 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		061C7016226EC391000C0499 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		061C7018226EC391000C0499 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		061C7019226EC391000C0499 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		061C701F226EC391000C0499 /* HobenImageDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HobenImageDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		061C7023226EC391000C0499 /* HobenImageDemoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HobenImageDemoTests.m; sourceTree = "<group>"; };
+		061C7025226EC391000C0499 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		061C702A226EC391000C0499 /* HobenImageDemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HobenImageDemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		061C702E226EC391000C0499 /* HobenImageDemoUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HobenImageDemoUITests.m; sourceTree = "<group>"; };
+		061C7030226EC391000C0499 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		066A4574226EE99500665AF5 /* HobenImageLib.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HobenImageLib.framework; path = HobenImageDemo/HobenImageLib.framework; sourceTree = "<group>"; };
+		066A4577226EEA6800665AF5 /* HobenImageLib.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = HobenImageLib.framework; sourceTree = "<group>"; };
+		066A4579226EFC5500665AF5 /* CommonDefine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CommonDefine.h; sourceTree = "<group>"; };
+		066A457A226EFE1300665AF5 /* PreviewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PreviewController.h; sourceTree = "<group>"; };
+		066A457B226EFE1300665AF5 /* PreviewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PreviewController.m; sourceTree = "<group>"; };
+		63A927621CC8CC7429AF3B4A /* libPods-HobenImageDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-HobenImageDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		64D298CF55D2B179789A1168 /* Pods-HobenImageDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HobenImageDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-HobenImageDemo/Pods-HobenImageDemo.release.xcconfig"; sourceTree = "<group>"; };
+		BAAF365F36294F46C9223EFE /* Pods-HobenImageDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HobenImageDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HobenImageDemo/Pods-HobenImageDemo.debug.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		061C7004226EC390000C0499 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				066A4578226EEA6800665AF5 /* HobenImageLib.framework in Frameworks */,
+				19BE9A6D5E4C50AF62983D62 /* libPods-HobenImageDemo.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		061C701C226EC391000C0499 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		061C7027226EC391000C0499 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		061C6FFE226EC390000C0499 = {
+			isa = PBXGroup;
+			children = (
+				066A4576226EEA6800665AF5 /* Framework */,
+				061C7009226EC390000C0499 /* HobenImageDemo */,
+				061C7022226EC391000C0499 /* HobenImageDemoTests */,
+				061C702D226EC391000C0499 /* HobenImageDemoUITests */,
+				061C7008226EC390000C0499 /* Products */,
+				066A4573226EE99500665AF5 /* Frameworks */,
+				EDAFA7237C16F0301BEB7420 /* Pods */,
+			);
+			sourceTree = "<group>";
+		};
+		061C7008226EC390000C0499 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				061C7007226EC390000C0499 /* HobenImageDemo.app */,
+				061C701F226EC391000C0499 /* HobenImageDemoTests.xctest */,
+				061C702A226EC391000C0499 /* HobenImageDemoUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		061C7009226EC390000C0499 /* HobenImageDemo */ = {
+			isa = PBXGroup;
+			children = (
+				061C700A226EC390000C0499 /* AppDelegate.h */,
+				061C700B226EC390000C0499 /* AppDelegate.m */,
+				061C700D226EC390000C0499 /* ViewController.h */,
+				061C700E226EC390000C0499 /* ViewController.m */,
+				061C7010226EC390000C0499 /* Main.storyboard */,
+				061C7013226EC391000C0499 /* Assets.xcassets */,
+				061C7015226EC391000C0499 /* LaunchScreen.storyboard */,
+				061C7018226EC391000C0499 /* Info.plist */,
+				061C7019226EC391000C0499 /* main.m */,
+				066A4579226EFC5500665AF5 /* CommonDefine.h */,
+				066A457A226EFE1300665AF5 /* PreviewController.h */,
+				066A457B226EFE1300665AF5 /* PreviewController.m */,
+			);
+			path = HobenImageDemo;
+			sourceTree = "<group>";
+		};
+		061C7022226EC391000C0499 /* HobenImageDemoTests */ = {
+			isa = PBXGroup;
+			children = (
+				061C7023226EC391000C0499 /* HobenImageDemoTests.m */,
+				061C7025226EC391000C0499 /* Info.plist */,
+			);
+			path = HobenImageDemoTests;
+			sourceTree = "<group>";
+		};
+		061C702D226EC391000C0499 /* HobenImageDemoUITests */ = {
+			isa = PBXGroup;
+			children = (
+				061C702E226EC391000C0499 /* HobenImageDemoUITests.m */,
+				061C7030226EC391000C0499 /* Info.plist */,
+			);
+			path = HobenImageDemoUITests;
+			sourceTree = "<group>";
+		};
+		066A4573226EE99500665AF5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				066A4574226EE99500665AF5 /* HobenImageLib.framework */,
+				63A927621CC8CC7429AF3B4A /* libPods-HobenImageDemo.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		066A4576226EEA6800665AF5 /* Framework */ = {
+			isa = PBXGroup;
+			children = (
+				066A4577226EEA6800665AF5 /* HobenImageLib.framework */,
+			);
+			path = Framework;
+			sourceTree = "<group>";
+		};
+		EDAFA7237C16F0301BEB7420 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				BAAF365F36294F46C9223EFE /* Pods-HobenImageDemo.debug.xcconfig */,
+				64D298CF55D2B179789A1168 /* Pods-HobenImageDemo.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		061C7006226EC390000C0499 /* HobenImageDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 061C7033226EC391000C0499 /* Build configuration list for PBXNativeTarget "HobenImageDemo" */;
+			buildPhases = (
+				3803DC4E36D72D557177518C /* [CP] Check Pods Manifest.lock */,
+				061C7003226EC390000C0499 /* Sources */,
+				061C7004226EC390000C0499 /* Frameworks */,
+				061C7005226EC390000C0499 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = HobenImageDemo;
+			productName = HobenImageDemo;
+			productReference = 061C7007226EC390000C0499 /* HobenImageDemo.app */;
+			productType = "com.apple.product-type.application";
+		};
+		061C701E226EC391000C0499 /* HobenImageDemoTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 061C7036226EC391000C0499 /* Build configuration list for PBXNativeTarget "HobenImageDemoTests" */;
+			buildPhases = (
+				061C701B226EC391000C0499 /* Sources */,
+				061C701C226EC391000C0499 /* Frameworks */,
+				061C701D226EC391000C0499 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				061C7021226EC391000C0499 /* PBXTargetDependency */,
+			);
+			name = HobenImageDemoTests;
+			productName = HobenImageDemoTests;
+			productReference = 061C701F226EC391000C0499 /* HobenImageDemoTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		061C7029226EC391000C0499 /* HobenImageDemoUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 061C7039226EC391000C0499 /* Build configuration list for PBXNativeTarget "HobenImageDemoUITests" */;
+			buildPhases = (
+				061C7026226EC391000C0499 /* Sources */,
+				061C7027226EC391000C0499 /* Frameworks */,
+				061C7028226EC391000C0499 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				061C702C226EC391000C0499 /* PBXTargetDependency */,
+			);
+			name = HobenImageDemoUITests;
+			productName = HobenImageDemoUITests;
+			productReference = 061C702A226EC391000C0499 /* HobenImageDemoUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		061C6FFF226EC390000C0499 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 1020;
+				ORGANIZATIONNAME = netease;
+				TargetAttributes = {
+					061C7006226EC390000C0499 = {
+						CreatedOnToolsVersion = 10.2;
+					};
+					061C701E226EC391000C0499 = {
+						CreatedOnToolsVersion = 10.2;
+						TestTargetID = 061C7006226EC390000C0499;
+					};
+					061C7029226EC391000C0499 = {
+						CreatedOnToolsVersion = 10.2;
+						TestTargetID = 061C7006226EC390000C0499;
+					};
+				};
+			};
+			buildConfigurationList = 061C7002226EC390000C0499 /* Build configuration list for PBXProject "HobenImageDemo" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 061C6FFE226EC390000C0499;
+			productRefGroup = 061C7008226EC390000C0499 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				061C7006226EC390000C0499 /* HobenImageDemo */,
+				061C701E226EC391000C0499 /* HobenImageDemoTests */,
+				061C7029226EC391000C0499 /* HobenImageDemoUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		061C7005226EC390000C0499 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				061C7017226EC391000C0499 /* LaunchScreen.storyboard in Resources */,
+				061C7014226EC391000C0499 /* Assets.xcassets in Resources */,
+				061C7012226EC390000C0499 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		061C701D226EC391000C0499 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		061C7028226EC391000C0499 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		3803DC4E36D72D557177518C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-HobenImageDemo-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		061C7003226EC390000C0499 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				066A457C226EFE1300665AF5 /* PreviewController.m in Sources */,
+				061C700F226EC390000C0499 /* ViewController.m in Sources */,
+				061C701A226EC391000C0499 /* main.m in Sources */,
+				061C700C226EC390000C0499 /* AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		061C701B226EC391000C0499 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				061C7024226EC391000C0499 /* HobenImageDemoTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		061C7026226EC391000C0499 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				061C702F226EC391000C0499 /* HobenImageDemoUITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		061C7021226EC391000C0499 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 061C7006226EC390000C0499 /* HobenImageDemo */;
+			targetProxy = 061C7020226EC391000C0499 /* PBXContainerItemProxy */;
+		};
+		061C702C226EC391000C0499 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 061C7006226EC390000C0499 /* HobenImageDemo */;
+			targetProxy = 061C702B226EC391000C0499 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		061C7010226EC390000C0499 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				061C7011226EC390000C0499 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		061C7015226EC391000C0499 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				061C7016226EC391000C0499 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		061C7031226EC391000C0499 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		061C7032226EC391000C0499 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		061C7034226EC391000C0499 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = BAAF365F36294F46C9223EFE /* Pods-HobenImageDemo.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = HHB3KYN63H;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/HobenImageDemo",
+					"$(PROJECT_DIR)/Framework",
+				);
+				INFOPLIST_FILE = HobenImageDemo/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.netease.cc.test.HobenImageDemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		061C7035226EC391000C0499 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 64D298CF55D2B179789A1168 /* Pods-HobenImageDemo.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = HHB3KYN63H;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/HobenImageDemo",
+					"$(PROJECT_DIR)/Framework",
+				);
+				INFOPLIST_FILE = HobenImageDemo/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.netease.cc.test.HobenImageDemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		061C7037226EC391000C0499 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = HHB3KYN63H;
+				INFOPLIST_FILE = HobenImageDemoTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.netease.cc.test.HobenImageDemoTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HobenImageDemo.app/HobenImageDemo";
+			};
+			name = Debug;
+		};
+		061C7038226EC391000C0499 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = HHB3KYN63H;
+				INFOPLIST_FILE = HobenImageDemoTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.netease.cc.test.HobenImageDemoTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HobenImageDemo.app/HobenImageDemo";
+			};
+			name = Release;
+		};
+		061C703A226EC391000C0499 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = HHB3KYN63H;
+				INFOPLIST_FILE = HobenImageDemoUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.netease.cc.test.HobenImageDemoUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = HobenImageDemo;
+			};
+			name = Debug;
+		};
+		061C703B226EC391000C0499 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = HHB3KYN63H;
+				INFOPLIST_FILE = HobenImageDemoUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.netease.cc.test.HobenImageDemoUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = HobenImageDemo;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		061C7002226EC390000C0499 /* Build configuration list for PBXProject "HobenImageDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				061C7031226EC391000C0499 /* Debug */,
+				061C7032226EC391000C0499 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		061C7033226EC391000C0499 /* Build configuration list for PBXNativeTarget "HobenImageDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				061C7034226EC391000C0499 /* Debug */,
+				061C7035226EC391000C0499 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		061C7036226EC391000C0499 /* Build configuration list for PBXNativeTarget "HobenImageDemoTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				061C7037226EC391000C0499 /* Debug */,
+				061C7038226EC391000C0499 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		061C7039226EC391000C0499 /* Build configuration list for PBXNativeTarget "HobenImageDemoUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				061C703A226EC391000C0499 /* Debug */,
+				061C703B226EC391000C0499 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 061C6FFF226EC390000C0499 /* Project object */;
+}

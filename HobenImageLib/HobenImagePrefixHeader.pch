@@ -1,0 +1,24 @@
+//
+//  HobenImagePrefixHeader.pch
+//  HobenImageLib
+//
+//  Created by 黄洪彬 on 2019/4/17.
+//  Copyright © 2019 netease. All rights reserved.
+//
+
+#ifndef HobenImagePrefixHeader_pch
+#define HobenImagePrefixHeader_pch
+
+#ifdef __OBJC__
+
+#import <UIKit/UIKit.h>
+
+#import <Foundation/Foundation.h>
+
+#import "HobenCommonDefine.h"
+
+#import "HobenImageEnum.h"
+
+#endif
+
+#endif /* HobenImagePrefixHeader_pch */

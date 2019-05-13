@@ -1,0 +1,6 @@
+framework module HobenImageLib {
+  umbrella header "HobenImageLib.h"
+
+  export *
+  module * { export * }
+}
