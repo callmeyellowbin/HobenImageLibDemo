@@ -208,22 +208,24 @@
             STRONG_SELF_BEGIN
             [strongSelf.activityIndicator stopAnimating];
             [[UIApplication sharedApplication] endIgnoringInteractionEvents];
-            if (strongSelf.gaussianSelectButton.selected) {
-                [strongSelf processGaussianImage:image completedBlock:^(UIImage * _Nullable image) {
-                    if (strongSelf.watermarkSelectButton.selected) {
-                        [strongSelf processWatermarkImage:image text:@"@Hoben" position:strongSelf.watermarkPosition completedBlock:^(UIImage * _Nullable image) {
+            if (image) {
+                if (strongSelf.gaussianSelectButton.selected) {
+                    [strongSelf processGaussianImage:image completedBlock:^(UIImage * _Nullable image) {
+                        if (strongSelf.watermarkSelectButton.selected) {
+                            [strongSelf processWatermarkImage:image text:@"@Hoben" position:strongSelf.watermarkPosition completedBlock:^(UIImage * _Nullable image) {
+                                [strongSelf showPreviewImageWithImage:image];
+                            }];
+                        } else {
                             [strongSelf showPreviewImageWithImage:image];
-                        }];
-                    } else {
+                        }
+                    }];
+                } else if (strongSelf.watermarkSelectButton.selected) {
+                    [strongSelf processWatermarkImage:image text:@"@Hoben" position:strongSelf.watermarkPosition completedBlock:^(UIImage * _Nullable image) {
                         [strongSelf showPreviewImageWithImage:image];
-                    }
-                }];
-            } else if (strongSelf.watermarkSelectButton.selected) {
-                [strongSelf processWatermarkImage:image text:@"@Hoben" position:strongSelf.watermarkPosition completedBlock:^(UIImage * _Nullable image) {
+                    }];
+                } else {
                     [strongSelf showPreviewImageWithImage:image];
-                }];
-            } else {
-                [strongSelf showPreviewImageWithImage:image];
+                }
             }
             STRONG_SELF_END
         };
