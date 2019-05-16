@@ -39,7 +39,8 @@
 
 - (void)requestImageWithUrl:(NSString *)url
               progressBlock:(HobenImageProgressBlock)progressBlock
-             completedBlock:(HobenImageCompletedBlock)completedBlock {
+             completedBlock:(HobenImageCompletedBlock)completedBlock
+                 errorBlock:(HobenImageErrorBlock)errorBlock {
     UIImage *image = [self _imageWithUrl:url];
     if (image) {
         if (progressBlock) {
@@ -48,8 +49,11 @@
         if (completedBlock) {
             completedBlock(image);
         }
+        if (errorBlock) {
+            errorBlock(nil);
+        }
     } else {
-        [self _loadImageWithUrl:url progressBlock:progressBlock completedBlock:completedBlock];
+        [self _loadImageWithUrl:url progressBlock:progressBlock completedBlock:completedBlock errorBlock:errorBlock];
     }
 }
 
@@ -59,17 +63,28 @@
 
 - (void)_loadImageWithUrl:(NSString *)url
             progressBlock:(HobenImageProgressBlock)progreeBlock
-           completedBlock:(HobenImageCompletedBlock)completedBlock {
+           completedBlock:(HobenImageCompletedBlock)completedBlock
+               errorBlock:(HobenImageErrorBlock)errorBlock {
     if ([self.requestList containsObject:url]) {
+        if (progreeBlock) {
+            progreeBlock(0.f);
+        }
+        if (completedBlock) {
+            completedBlock(nil);
+        }
+        if (errorBlock) {
+            errorBlock(@"图片加载请求重复");
+        }
         return;
     }
     [self.requestList addObject:url];
-    [self _requestImageWithUrl:url progressBlock:progreeBlock completedBlock:completedBlock];
+    [self _requestImageWithUrl:url progressBlock:progreeBlock completedBlock:completedBlock errorBlock:errorBlock];
 }
 
 - (void)_requestImageWithUrl:(NSString *)url
                progressBlock:(HobenImageProgressBlock)progreeBlock
-              completedBlock:(HobenImageCompletedBlock)completedBlock {
+              completedBlock:(HobenImageCompletedBlock)completedBlock
+                  errorBlock:(HobenImageErrorBlock)errorBlock {
     WEAK_SELF_DECLARED
     [[SDWebImageManager sharedManager] loadImageWithURL:[NSURL URLWithString:url] options:0 progress:^(NSInteger receivedSize, NSInteger expectedSize, NSURL * _Nullable targetURL) {
         CGFloat progress = receivedSize * 1.f / expectedSize;
@@ -83,11 +98,17 @@
             if (completedBlock) {
                 completedBlock(image);
             }
+            if (errorBlock) {
+                errorBlock(nil);
+            }
         } else {
             NSLog(@"Cache ERROR in URL:%@", url);
             [strongSelf.requestList removeObject:url];
             if (completedBlock) {
                 completedBlock(nil);
+            }
+            if (errorBlock) {
+                errorBlock([NSString stringWithFormat:@"加载图片失败，异常原因：%@", [error localizedDescription]]);
             }
         }
         STRONG_SELF_END

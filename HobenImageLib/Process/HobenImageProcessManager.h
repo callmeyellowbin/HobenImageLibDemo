@@ -14,9 +14,13 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (instancetype)sharedInstance;
 
-- (void)processImage:(UIImage *)image
-         processType:(HobenImageProcessType)processType
-      completedBlock:(HobenImageCompletedBlock)completeBlock;
+- (void)processGaussianImage:(UIImage *)image
+              completedBlock:(HobenImageCompletedBlock)completeBlock;
+
+- (void)processWatermarkImage:(UIImage *)image
+                         text:(NSString *)text
+                     position:(HobenImageWatermarkPosition)position
+               completedBlock:(HobenImageCompletedBlock)completeBlock;
 
 @end
 

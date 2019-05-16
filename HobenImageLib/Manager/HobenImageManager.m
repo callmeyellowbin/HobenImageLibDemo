@@ -22,12 +22,22 @@
 }
 
 - (void)requestImageWithUrl:(NSString *)url
-                processType:(HobenImageProcessType)processType
               progressBlock:(HobenImageProgressBlock)progressBlock
-             completedBlock:(HobenImageCompletedBlock)completedBlock {
-    [[HobenImageCache sharedInstance] requestImageWithUrl:url progressBlock:progressBlock completedBlock:^(UIImage * _Nullable image) {
-        [[HobenImageProcessManager sharedInstance] processImage:image processType:processType completedBlock:completedBlock];
-    }];
+             completedBlock:(HobenImageCompletedBlock)completedBlock
+                 errorBlock:(HobenImageErrorBlock)errorBlock {
+    [[HobenImageCache sharedInstance] requestImageWithUrl:url progressBlock:progressBlock completedBlock:completedBlock errorBlock:errorBlock];
+}
+
+- (void)processGaussianImage:(UIImage *)image
+              completedBlock:(HobenImageCompletedBlock)completeBlock {
+    [[HobenImageProcessManager sharedInstance] processGaussianImage:image completedBlock:completeBlock];
+}
+
+- (void)processWatermarkImage:(UIImage *)image
+                         text:(NSString *)text
+                     position:(HobenImageWatermarkPosition)position
+               completedBlock:(HobenImageCompletedBlock)completeBlock {
+    [[HobenImageProcessManager sharedInstance] processWatermarkImage:image text:text position:position completedBlock:completeBlock];
 }
 
 - (void)removeCacheWithCompletionBlock:(void (^)(void))completionBlock {

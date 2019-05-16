@@ -20,25 +20,8 @@
     return sharedInstance;
 }
 
-- (void)processImage:(UIImage *)image
-         processType:(HobenImageProcessType)processType
-      completedBlock:(HobenImageCompletedBlock)completeBlock {
-    switch (processType) {
-        case HobenImageProcessTypeCommon:
-            completeBlock(image);
-            break;
-          
-        case HobenImageProcessTypeGaussian:
-            [self _processGaussianImage:image completedBlock:completeBlock];
-            break;
-            
-        case HobenImageProcessTypeWatermark:
-            [self _processWatermarkImage:image text:@"@Hoben" completedBlock:completeBlock];
-            break;
-    }
-}
-
-- (void)_processGaussianImage:(UIImage *)image completedBlock:(void (^)(UIImage * _Nullable image))completeBlock {
+- (void)processGaussianImage:(UIImage *)image
+              completedBlock:(void (^)(UIImage * _Nullable image))completeBlock {
     CGFloat blur = 0.5f;
     int boxSize = (int)(blur * 40);
     
@@ -94,12 +77,54 @@
     }
 }
 
-- (void)_processWatermarkImage:(UIImage *)image text:(NSString *)text completedBlock:(HobenImageCompletedBlock)completeBlock {
+- (void)processWatermarkImage:(UIImage *)image
+                         text:(NSString *)text
+                     position:(HobenImageWatermarkPosition)position
+               completedBlock:(HobenImageCompletedBlock)completeBlock {
     UIGraphicsBeginImageContextWithOptions(image.size, NO, 0);
+    
     [image drawInRect:CGRectMake(0, 0, image.size.width, image.size.height)];
     
-    NSDictionary *dictionary = @{NSForegroundColorAttributeName: [UIColor whiteColor], NSFontAttributeName: [UIFont boldSystemFontOfSize:image.size.height / 10]};
-    [text drawAtPoint:CGPointZero withAttributes:dictionary];
+    UIFont *font = [UIFont boldSystemFontOfSize:image.size.height / 10];
+    
+    NSDictionary *dictionary = @{NSForegroundColorAttributeName: [UIColor whiteColor], NSFontAttributeName: font};
+    
+    CGFloat watermarkX = 0.f;
+    CGFloat watermarkY = 0.f;
+    
+    CGFloat fontSize = font.pointSize * 4;
+    CGFloat fontHeight = font.pointSize;
+    
+    switch (position) {
+        case HobenImageWatermarkPositionUpLeft: {
+            watermarkX = 0.f;
+            watermarkY = 0.f;
+        }
+            break;
+        case HobenImageWatermarkPositionUpRight: {
+            watermarkX = image.size.width - fontSize;
+            watermarkY = 0.f;
+        }
+            break;
+        case HobenImageWatermarkPositionCenter: {
+            watermarkX = image.size.width / 2 - fontSize / 2;
+            watermarkY = image.size.height / 2 - fontHeight / 2;
+        }
+            break;
+        case HobenImageWatermarkPositionDownLeft: {
+            watermarkX = 0.f;
+            watermarkY = image.size.height - fontHeight;
+        }
+            break;
+        case HobenImageWatermarkPositionDownRight: {
+            watermarkX = image.size.width - fontSize;
+            watermarkY = image.size.height - fontHeight;
+        }
+            break;
+            
+    }
+    
+    [text drawAtPoint:CGPointMake(watermarkX, watermarkY) withAttributes:dictionary];
     
     UIImage *resultImage = UIGraphicsGetImageFromCurrentImageContext();
     

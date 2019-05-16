@@ -20,15 +20,40 @@ NS_ASSUME_NONNULL_BEGIN
  根据处理类型下载图片
  
  @param url             图片的URL地址
- @param processType     图片处理类型
  @param progressBlock   包含CGFloat类型的下载进度回调
  @param completedBlock  包含UIImage类型的下载完成回调
+ @param errorBlock      包含NSString类型异常信息的加载异常回调
 *
 **/
 - (void)requestImageWithUrl:(NSString *)url
-                processType:(HobenImageProcessType)processType
               progressBlock:(HobenImageProgressBlock)progressBlock
-             completedBlock:(HobenImageCompletedBlock)completedBlock;
+             completedBlock:(HobenImageCompletedBlock)completedBlock
+                 errorBlock:(HobenImageErrorBlock)errorBlock;
+
+/**
+ *
+ 高斯模糊图片
+ 
+ @param image           原图
+ @param completeBlock   包含UIImage类型的处理完成回调
+ *
+ **/
+- (void)processGaussianImage:(UIImage *)image
+              completedBlock:(HobenImageCompletedBlock)completeBlock;
+
+/**
+ *
+ 水印处理图片
+ 
+ @param image           原图
+ @param text            水印文字
+ @param completeBlock   包含UIImage类型的处理完成回调
+ *
+ **/
+- (void)processWatermarkImage:(UIImage *)image
+                         text:(NSString *)text
+                     position:(HobenImageWatermarkPosition)position
+               completedBlock:(HobenImageCompletedBlock)completeBlock;
 
 /**
  *
@@ -52,7 +77,6 @@ NS_ASSUME_NONNULL_BEGIN
  *
  停止预加载图片
  
- @param urlStringArray  图片的URL地址数组
  *
  **/
 - (void)cancelPrefetchingImage;

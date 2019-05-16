@@ -16,7 +16,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)requestImageWithUrl:(NSString *)url
               progressBlock:(HobenImageProgressBlock)progressBlock
-             completedBlock:(HobenImageCompletedBlock)completedBlock;
+             completedBlock:(HobenImageCompletedBlock)completedBlock
+                 errorBlock:(HobenImageErrorBlock)errorBlock;
 
 - (void)removeCacheWithCompletionBlock:(void (^)(void))completionBlock;
 

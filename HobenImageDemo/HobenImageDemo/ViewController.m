@@ -14,15 +14,21 @@
 
 @interface ViewController ()
 
-@property (nonatomic, strong) UIButton                  *commonSelectButton;
-
 @property (nonatomic, strong) UIButton                  *gaussianSelectButton;
 
 @property (nonatomic, strong) UIButton                  *watermarkSelectButton;
 
-@property (nonatomic, strong) UIButton                  *prefetchButton;
+@property (nonatomic, strong) UIButton                  *watermarkUpLeftButton;
 
-@property (nonatomic, assign) HobenImageProcessType     processType;
+@property (nonatomic, strong) UIButton                  *watermarkUpRightButton;
+
+@property (nonatomic, strong) UIButton                  *watermarkCenterButton;
+
+@property (nonatomic, strong) UIButton                  *watermarkDownLeftButton;
+
+@property (nonatomic, strong) UIButton                  *watermarkDownRightButton;
+
+@property (nonatomic, strong) UIButton                  *prefetchButton;
 
 @property (nonatomic, strong) UIButton                  *firstImageButton;
 
@@ -40,6 +46,10 @@
 
 @property (nonatomic, strong) UIButton                  *removeCacheButton;
 
+@property (nonatomic, strong) UIActivityIndicatorView * activityIndicator;
+
+@property (nonatomic, assign) HobenImageWatermarkPosition watermarkPosition;
+
 @end
 
 @implementation ViewController
@@ -53,11 +63,15 @@
 - (void)_setup {
     
     self.view.backgroundColor = [UIColor whiteColor];
-    self.processType = HobenImageProcessTypeCommon;
+    self.watermarkPosition = HobenImageWatermarkPositionUpLeft;
     
-    [self.view addSubview:self.commonSelectButton];
     [self.view addSubview:self.gaussianSelectButton];
     [self.view addSubview:self.watermarkSelectButton];
+    [self.view addSubview:self.watermarkUpLeftButton];
+    [self.view addSubview:self.watermarkUpRightButton];
+    [self.view addSubview:self.watermarkCenterButton];
+    [self.view addSubview:self.watermarkDownLeftButton];
+    [self.view addSubview:self.watermarkDownRightButton];
     [self.view addSubview:self.prefetchButton];
     [self.view addSubview:self.firstImageButton];
     [self.view addSubview:self.secondImageButton];
@@ -66,18 +80,36 @@
     [self.view addSubview:self.progressView];
     [self.view addSubview:self.progressLabel];
     [self.view addSubview:self.removeCacheButton];
+    [self.view addSubview:self.activityIndicator];
     
-    [@[self.commonSelectButton, self.gaussianSelectButton, self.watermarkSelectButton, self.prefetchButton] mas_distributeViewsAlongAxis:MASAxisTypeHorizontal withFixedSpacing:5.f leadSpacing:5.f tailSpacing:5.f];
+    [self.activityIndicator mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.center.equalTo(self.view);
+        make.size.mas_equalTo(CGSizeMake(180.f, 50.f));
+    }];
     
-    [@[self.commonSelectButton, self.gaussianSelectButton, self.watermarkSelectButton, self.prefetchButton] mas_makeConstraints:^(MASConstraintMaker *make) {
+    //设置小菊花颜色
+    self.activityIndicator.color = [UIColor blackColor];
+    //设置背景颜色
+    self.activityIndicator.backgroundColor = [UIColor whiteColor];
+    
+    [@[self.gaussianSelectButton, self.watermarkSelectButton, self.prefetchButton] mas_distributeViewsAlongAxis:MASAxisTypeHorizontal withFixedSpacing:5.f leadSpacing:5.f tailSpacing:5.f];
+    
+    [@[self.watermarkUpLeftButton, self.watermarkUpRightButton, self.watermarkCenterButton, self.watermarkDownLeftButton, self.watermarkDownRightButton] mas_distributeViewsAlongAxis:MASAxisTypeHorizontal withFixedSpacing:5.f leadSpacing:5.f tailSpacing:5.f];
+    
+    [@[self.gaussianSelectButton, self.watermarkSelectButton, self.prefetchButton] mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.view).offset(90.f);
+        make.height.mas_equalTo(30.f);
+    }];
+    
+    [@[self.watermarkUpLeftButton, self.watermarkUpRightButton, self.watermarkCenterButton, self.watermarkDownLeftButton, self.watermarkDownRightButton] mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.gaussianSelectButton.mas_bottom).offset(10.f);
         make.height.mas_equalTo(30.f);
     }];
     
     [@[self.firstImageButton, self.secondImageButton] mas_distributeViewsAlongAxis:MASAxisTypeHorizontal withFixedSpacing:10.f leadSpacing:10.f tailSpacing:10.f];
     
     [@[self.firstImageButton, self.secondImageButton] mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.commonSelectButton.mas_bottom).offset(10.f);
+        make.top.equalTo(self.watermarkUpLeftButton.mas_bottom).offset(10.f);
         make.height.mas_equalTo(100.f);
     }];
     
@@ -104,12 +136,22 @@
 #pragma mark - Clicked
 
 - (void)btn_clicked:(UIButton *)button {
-    if (button == self.commonSelectButton) {
-        self.processType = HobenImageProcessTypeCommon;
-    } else if (button == self.gaussianSelectButton) {
-        self.processType = HobenImageProcessTypeGaussian;
+    if (button == self.gaussianSelectButton) {
+        button.selected = !button.selected;
     } else if (button == self.watermarkSelectButton) {
-        self.processType = HobenImageProcessTypeWatermark;
+        button.selected = !button.selected;
+        BOOL enabled = button.selected;
+        NSArray <UIButton *> *buttonArray = @[self.watermarkUpLeftButton, self.watermarkUpRightButton, self.watermarkCenterButton, self.watermarkDownLeftButton, self.watermarkDownRightButton];
+        for (UIButton *watermarkButton in buttonArray) {
+            watermarkButton.enabled = enabled;
+            if (!enabled) {
+                watermarkButton.selected = NO;
+            }
+        }
+        if (enabled) {
+            self.watermarkPosition = HobenImageWatermarkPositionUpLeft;
+            self.watermarkUpLeftButton.selected = YES;
+        }
     } else if (button == self.removeCacheButton) {
         WEAK_SELF_DECLARED
         [[HobenImageManager sharedInstance] removeCacheWithCompletionBlock:^{
@@ -126,7 +168,19 @@
             [self showAlertWithMessage:@"已取消预加载功能"];
             [[HobenImageManager sharedInstance] cancelPrefetchingImage];
         }
+    } else if (button == self.watermarkUpLeftButton) {
+        self.watermarkPosition = HobenImageWatermarkPositionUpLeft;
+    } else if (button == self.watermarkUpRightButton) {
+        self.watermarkPosition = HobenImageWatermarkPositionUpRight;
+    } else if (button == self.watermarkCenterButton) {
+        self.watermarkPosition = HobenImageWatermarkPositionCenter;
+    } else if (button == self.watermarkDownLeftButton) {
+        self.watermarkPosition = HobenImageWatermarkPositionDownLeft;
+    } else if (button == self.watermarkDownRightButton) {
+        self.watermarkPosition = HobenImageWatermarkPositionDownRight;
     } else {
+        [self.activityIndicator startAnimating];
+        [[UIApplication sharedApplication] beginIgnoringInteractionEvents];
         NSInteger index = 0;
         if (button == self.firstImageButton) {
             index = 0;
@@ -152,18 +206,60 @@
         
         void (^completedBlock)(UIImage * _Nullable image) = ^(UIImage * _Nullable image) {
             STRONG_SELF_BEGIN
-            PreviewController *vc = [[PreviewController alloc] initWithImage:image];
-            [strongSelf.navigationController pushViewController:vc animated:YES];
+            [strongSelf.activityIndicator stopAnimating];
+            [[UIApplication sharedApplication] endIgnoringInteractionEvents];
+            if (strongSelf.gaussianSelectButton.selected) {
+                [strongSelf processGaussianImage:image completedBlock:^(UIImage * _Nullable image) {
+                    if (strongSelf.watermarkSelectButton.selected) {
+                        [strongSelf processWatermarkImage:image text:@"@Hoben" position:strongSelf.watermarkPosition completedBlock:^(UIImage * _Nullable image) {
+                            [strongSelf showPreviewImageWithImage:image];
+                        }];
+                    } else {
+                        [strongSelf showPreviewImageWithImage:image];
+                    }
+                }];
+            } else if (strongSelf.watermarkSelectButton.selected) {
+                [strongSelf processWatermarkImage:image text:@"@Hoben" position:strongSelf.watermarkPosition completedBlock:^(UIImage * _Nullable image) {
+                    [strongSelf showPreviewImageWithImage:image];
+                }];
+            } else {
+                [strongSelf showPreviewImageWithImage:image];
+            }
             STRONG_SELF_END
         };
         
+        void (^errorBlock)(NSString * _Nullable errorDesc) = ^(NSString * _Nullable errorDesc) {
+            if (errorDesc && errorDesc.length > 0) {
+                STRONG_SELF_BEGIN
+                [strongSelf showAlertWithMessage:errorDesc];
+                STRONG_SELF_END
+            }
+        };
+        
         [[HobenImageManager sharedInstance] requestImageWithUrl:url
-                                                    processType:self.processType
                                                   progressBlock:progressBlock
-                                                 completedBlock:completedBlock];
+                                                 completedBlock:completedBlock
+                                                     errorBlock:errorBlock];
         
         
     }
+}
+
+- (void)processGaussianImage:(UIImage *)image
+              completedBlock:(HobenImageCompletedBlock)completeBlock {
+    [[HobenImageManager sharedInstance] processGaussianImage:image completedBlock:completeBlock];
+}
+
+- (void)processWatermarkImage:(UIImage *)image
+                         text:(NSString *)text
+                     position:(HobenImageWatermarkPosition)position
+               completedBlock:(HobenImageCompletedBlock)completeBlock {
+    [[HobenImageManager sharedInstance] processWatermarkImage:image text:text position:position completedBlock:completeBlock];
+}
+
+- (void)showPreviewImageWithImage:(UIImage *)image {
+    PreviewController *vc = [[PreviewController alloc] initWithImage:image];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (void)showAlertWithMessage:(NSString *)msg {
@@ -180,15 +276,17 @@
                                           completion:nil];
 }
 
-- (void)setProcessType:(HobenImageProcessType)processType {
-    if (_processType == processType) {
+- (void)setWatermarkPosition:(HobenImageWatermarkPosition)watermarkPosition {
+    if (_watermarkPosition == watermarkPosition) {
         return;
     }
-    _processType = processType;
+    _watermarkPosition = watermarkPosition;
     
-    self.commonSelectButton.selected = processType == HobenImageProcessTypeCommon;
-    self.gaussianSelectButton.selected = processType == HobenImageProcessTypeGaussian;
-    self.watermarkSelectButton.selected = processType == HobenImageProcessTypeWatermark;
+    self.watermarkUpLeftButton.selected = watermarkPosition == HobenImageWatermarkPositionUpLeft;
+    self.watermarkUpRightButton.selected = watermarkPosition == HobenImageWatermarkPositionUpRight;
+    self.watermarkCenterButton.selected = watermarkPosition == HobenImageWatermarkPositionCenter;
+    self.watermarkDownLeftButton.selected = watermarkPosition == HobenImageWatermarkPositionDownLeft;
+    self.watermarkDownRightButton.selected = watermarkPosition == HobenImageWatermarkPositionDownRight;
     
 }
 
@@ -203,24 +301,6 @@
 }
 
 #pragma mark - Getter
-
-- (UIButton *)commonSelectButton {
-    if (!_commonSelectButton) {
-        _commonSelectButton = ({
-            UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-            [button addTarget:self action:@selector(btn_clicked:) forControlEvents:UIControlEventTouchUpInside];
-            [button setImage:[UIImage imageNamed:@"ratio_button_unselected"] forState:UIControlStateNormal];
-            [button setImage:[UIImage imageNamed:@"ratio_button_selected"] forState:UIControlStateSelected];
-            [button setTitle:@"普通" forState:UIControlStateNormal];
-            [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-            button.titleLabel.font = [UIFont systemFontOfSize:12.f];
-            [button sizeToFit];
-            button.selected = YES;
-            button;
-        });
-    }
-    return _commonSelectButton;
-}
 
 - (UIButton *)gaussianSelectButton {
     if (!_gaussianSelectButton) {
@@ -254,6 +334,91 @@
         });
     }
     return _watermarkSelectButton;
+}
+
+- (UIButton *)watermarkUpLeftButton {
+    if (!_watermarkUpLeftButton) {
+        _watermarkUpLeftButton = ({
+            UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+            [button addTarget:self action:@selector(btn_clicked:) forControlEvents:UIControlEventTouchUpInside];
+            [button setImage:[UIImage imageNamed:@"ratio_button_unselected"] forState:UIControlStateNormal];
+            [button setImage:[UIImage imageNamed:@"ratio_button_selected"] forState:UIControlStateSelected];
+            [button setTitle:@"左上" forState:UIControlStateNormal];
+            [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+            button.titleLabel.font = [UIFont systemFontOfSize:12.f];
+            [button sizeToFit];
+            button;
+        });
+    }
+    return _watermarkUpLeftButton;
+}
+
+- (UIButton *)watermarkUpRightButton {
+    if (!_watermarkUpRightButton) {
+        _watermarkUpRightButton = ({
+            UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+            [button addTarget:self action:@selector(btn_clicked:) forControlEvents:UIControlEventTouchUpInside];
+            [button setImage:[UIImage imageNamed:@"ratio_button_unselected"] forState:UIControlStateNormal];
+            [button setImage:[UIImage imageNamed:@"ratio_button_selected"] forState:UIControlStateSelected];
+            [button setTitle:@"右上" forState:UIControlStateNormal];
+            [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+            button.titleLabel.font = [UIFont systemFontOfSize:12.f];
+            [button sizeToFit];
+            button;
+        });
+    }
+    return _watermarkUpRightButton;
+}
+
+- (UIButton *)watermarkCenterButton {
+    if (!_watermarkCenterButton) {
+        _watermarkCenterButton = ({
+            UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+            [button addTarget:self action:@selector(btn_clicked:) forControlEvents:UIControlEventTouchUpInside];
+            [button setImage:[UIImage imageNamed:@"ratio_button_unselected"] forState:UIControlStateNormal];
+            [button setImage:[UIImage imageNamed:@"ratio_button_selected"] forState:UIControlStateSelected];
+            [button setTitle:@"中间" forState:UIControlStateNormal];
+            [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+            button.titleLabel.font = [UIFont systemFontOfSize:12.f];
+            [button sizeToFit];
+            button;
+        });
+    }
+    return _watermarkCenterButton;
+}
+
+- (UIButton *)watermarkDownLeftButton {
+    if (!_watermarkDownLeftButton) {
+        _watermarkDownLeftButton = ({
+            UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+            [button addTarget:self action:@selector(btn_clicked:) forControlEvents:UIControlEventTouchUpInside];
+            [button setImage:[UIImage imageNamed:@"ratio_button_unselected"] forState:UIControlStateNormal];
+            [button setImage:[UIImage imageNamed:@"ratio_button_selected"] forState:UIControlStateSelected];
+            [button setTitle:@"左下" forState:UIControlStateNormal];
+            [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+            button.titleLabel.font = [UIFont systemFontOfSize:12.f];
+            [button sizeToFit];
+            button;
+        });
+    }
+    return _watermarkDownLeftButton;
+}
+
+- (UIButton *)watermarkDownRightButton {
+    if (!_watermarkDownRightButton) {
+        _watermarkDownRightButton = ({
+            UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+            [button addTarget:self action:@selector(btn_clicked:) forControlEvents:UIControlEventTouchUpInside];
+            [button setImage:[UIImage imageNamed:@"ratio_button_unselected"] forState:UIControlStateNormal];
+            [button setImage:[UIImage imageNamed:@"ratio_button_selected"] forState:UIControlStateSelected];
+            [button setTitle:@"右下" forState:UIControlStateNormal];
+            [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+            button.titleLabel.font = [UIFont systemFontOfSize:12.f];
+            [button sizeToFit];
+            button;
+        });
+    }
+    return _watermarkDownRightButton;
 }
 
 - (UIButton *)prefetchButton {
@@ -364,6 +529,16 @@
         });
     }
     return _removeCacheButton;
+}
+
+- (UIActivityIndicatorView *)activityIndicator {
+    if (!_activityIndicator) {
+        _activityIndicator = ({
+            UIActivityIndicatorView *view = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
+            view;
+        });
+    }
+    return _activityIndicator;
 }
 
 @end
